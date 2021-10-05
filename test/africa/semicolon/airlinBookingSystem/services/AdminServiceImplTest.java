@@ -88,7 +88,8 @@ class AdminServiceImplTest {
     @Test
     @DisplayName("Admin can add Airplane for services")
     void testThatAdminCanAddAirplaneForPassengersToBook(){
-        adminService.addAirplane
+        Airplane airplane = new Airplane("Ark","Delta","Lagos");
+        adminService.addAirplane(airplane);
     }
 
 }

@@ -1,12 +1,9 @@
 package africa.semicolon.airlinBookingSystem.services;
 
 
-import africa.semicolon.airlinBookingSystem.data.models.Admin;
 import africa.semicolon.airlinBookingSystem.data.models.Passenger;
 import africa.semicolon.airlinBookingSystem.data.repositories.PassengerDataBase;
 import africa.semicolon.airlinBookingSystem.exceptions.UserNotFoundException;
-
-import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
     PassengerDataBase passengerDataBase = PassengerDataBase.getInstance();
@@ -24,5 +21,11 @@ public class AdminServiceImpl implements AdminService {
             throw new UserNotFoundException("Passenger with the email not found");
         }
         return foundPassenger;
+    }
+
+    @Override
+    public Airplane addAirplane(Airplane airplane) {
+
+        return null;
     }
 }
