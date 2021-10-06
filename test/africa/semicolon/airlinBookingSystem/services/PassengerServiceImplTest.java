@@ -1,15 +1,15 @@
 package africa.semicolon.airlinBookingSystem.services;
 
-import africa.semicolon.airlinBookingSystem.data.models.Admin;
-import africa.semicolon.airlinBookingSystem.data.models.BookingEnquiry;
-import africa.semicolon.airlinBookingSystem.data.models.FlightInformation;
-import africa.semicolon.airlinBookingSystem.data.models.Passenger;
+import africa.semicolon.airlinBookingSystem.data.models.*;
 import africa.semicolon.airlinBookingSystem.data.repositories.PassengerDataBase;
+import africa.semicolon.airlinBookingSystem.exceptions.AirlineSystemException;
 import africa.semicolon.airlinBookingSystem.exceptions.PassengerAlreadyRegisteredException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -124,7 +124,7 @@ class PassengerServiceImplTest {
     }
     @Test
     @DisplayName("Passenger to Search for available flight")
-    void testThatPassengerCanSearchForBookingOfFlight(){
+    void testThatPassengerCanSearchForBookingOfFlight() throws AirlineSystemException {
         Passenger passenger1;
         Passenger passenger2;
 
@@ -142,7 +142,8 @@ class PassengerServiceImplTest {
         }
 
         passengerService.login("kelvin@yahoo.com", "1123");
-        BookingEnquiry booker = new BookingEnquiry();
-        FlightInformation onFlight = passengerService.airlineBookingEnquiries(booker);
+        BookingEnquiry booker = new BookingEnquiry("kelvin@yahoo.com","Delta","Togo","Flight oversea");
+        List<Airplane> onFlight = passengerService.airlineBookingEnquiries(booker);
+        assertEquals(1,passenger1.getBookingEnquiries().size());
     }
 }

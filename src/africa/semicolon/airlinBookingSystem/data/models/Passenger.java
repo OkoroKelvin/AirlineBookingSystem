@@ -14,6 +14,7 @@ public class Passenger {
     private String address;
     private boolean isActive;
     private String password;
+    private final List<BookingEnquiry> bookingEnquiries = new ArrayList<>();
 
 
     public Passenger(String email){
@@ -112,4 +113,19 @@ public class Passenger {
         return address;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<BookingEnquiry> getBookingEnquiries() {
+        return bookingEnquiries;
+    }
+
+    public void setBookingEnquiries(BookingEnquiry bookingEnquiry) {
+        bookingEnquiries.add(bookingEnquiry);
+    }
 }

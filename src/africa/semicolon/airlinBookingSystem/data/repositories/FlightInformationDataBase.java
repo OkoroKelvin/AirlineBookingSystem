@@ -1,5 +1,6 @@
 package africa.semicolon.airlinBookingSystem.data.repositories;
 
+import africa.semicolon.airlinBookingSystem.data.models.BookingEnquiry;
 import africa.semicolon.airlinBookingSystem.data.models.FlightInformation;
 
 import java.util.HashMap;
@@ -18,7 +19,8 @@ public class FlightInformationDataBase {
         return instance;
     }
 
-    public FlightInformation searchFlight(String origin, String destination) {
+    public FlightInformation searchFlight(BookingEnquiry bookingEnquiry){
+
         return null;
     }
 }

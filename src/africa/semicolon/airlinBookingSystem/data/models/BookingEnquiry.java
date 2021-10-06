@@ -4,11 +4,19 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class BookingEnquiry {
+    private String passengerEmail;
     private String origin;
     private String destination;
     private String bookingEnquiryDescription;
     private LocalDateTime bookingEnquiryDate;
 
+    public BookingEnquiry(String passengerEmail, String origin, String destination, String bookingEnquiryDescription) {
+        this.passengerEmail = passengerEmail;
+        this.origin = origin;
+        this.destination = destination;
+        this.bookingEnquiryDescription = bookingEnquiryDescription;
+        this.bookingEnquiryDate = LocalDateTime.now();
+    }
 
     public String getOrigin() {
         return origin;
@@ -40,5 +48,13 @@ public class BookingEnquiry {
 
     public void setBookingEnquiryDate(LocalDateTime bookingEnquiryDate) {
         this.bookingEnquiryDate = bookingEnquiryDate;
+    }
+
+    public String getPassengerEmail() {
+        return passengerEmail;
+    }
+
+    public void setPassengerEmail(String passengerEmail) {
+        this.passengerEmail = passengerEmail;
     }
 }
