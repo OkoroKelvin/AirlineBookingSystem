@@ -1,9 +1,6 @@
 package africa.semicolon.airlinBookingSystem.services;
 
-import africa.semicolon.airlinBookingSystem.data.models.Airplane;
-import africa.semicolon.airlinBookingSystem.data.models.BookingEnquiry;
-import africa.semicolon.airlinBookingSystem.data.models.FlightInformation;
-import africa.semicolon.airlinBookingSystem.data.models.Passenger;
+import africa.semicolon.airlinBookingSystem.data.models.*;
 import africa.semicolon.airlinBookingSystem.data.repositories.AirplaneDataBase;
 import africa.semicolon.airlinBookingSystem.data.repositories.FlightInformationDataBase;
 import africa.semicolon.airlinBookingSystem.data.repositories.PassengerDataBase;
@@ -52,5 +49,16 @@ public class PassengerServiceImpl implements PassengerService {
         Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
         foundPassenger.setBookingEnquiries(newBooker);
         return planeDataBase.searchFlight(newBooker);
+    }
+
+    @Override
+    public Ticket bookAirline(BookingEnquiry newBooker) {
+        Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
+       if (foundPassenger!=null) {
+           return new Ticket(foundPassenger.getFirstName() + " " + foundPassenger.getLastName(),
+                   foundPassenger.getEmail(), foundPassenger.getPhoneNumber(), newBooker.getBookingEnquiryDescription());
+       }
+       else
+           return null;
     }
 }

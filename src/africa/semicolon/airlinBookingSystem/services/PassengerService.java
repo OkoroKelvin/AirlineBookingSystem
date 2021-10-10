@@ -1,9 +1,6 @@
 package africa.semicolon.airlinBookingSystem.services;
 
-import africa.semicolon.airlinBookingSystem.data.models.Airplane;
-import africa.semicolon.airlinBookingSystem.data.models.BookingEnquiry;
-import africa.semicolon.airlinBookingSystem.data.models.FlightInformation;
-import africa.semicolon.airlinBookingSystem.data.models.Passenger;
+import africa.semicolon.airlinBookingSystem.data.models.*;
 import africa.semicolon.airlinBookingSystem.exceptions.AirlineSystemException;
 import africa.semicolon.airlinBookingSystem.exceptions.PassengerAlreadyRegisteredException;
 
@@ -19,4 +16,6 @@ public interface PassengerService {
     void clearPassenger();
 
    List<Airplane> airlineBookingEnquiries(BookingEnquiry newBookingEnquiry) throws AirlineSystemException;
+
+    Ticket bookAirline(BookingEnquiry booker);
 }

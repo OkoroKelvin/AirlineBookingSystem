@@ -3,29 +3,18 @@ package africa.semicolon.airlinBookingSystem.data.models;
 import java.time.LocalDateTime;
 
 public class Ticket {
-    private int id;
-    private String ticketDescription;
-    private Passenger passenger;
+    private String passengerName;
+    private String passengerEmail;
     private String passengerNum;
+    private String ticketDescription;
     private LocalDateTime ticketDate;
-    private String ticketType;
 
-
-    public Ticket(int id, String ticketDescription, Passenger passenger, String passengerNum, String ticketType) {
-        this.id = id;
+    public Ticket(String passengerName,String passengerEmail,String passengerNum, String ticketDescription) {
+        this.passengerName = passengerName;
+        this.passengerEmail = passengerEmail;
         this.ticketDescription = ticketDescription;
-        this.passenger = passenger;
         this.passengerNum = passengerNum;
         this.ticketDate = LocalDateTime.now();
-        this.ticketType = ticketType;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTicketDescription() {
@@ -34,14 +23,6 @@ public class Ticket {
 
     public void setTicketDescription(String ticketDescription) {
         this.ticketDescription = ticketDescription;
-    }
-
-    public Passenger getPassenger() {
-        return passenger;
-    }
-
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
     }
 
     public String getPassengerNum() {
@@ -60,12 +41,34 @@ public class Ticket {
         this.ticketDate = ticketDate;
     }
 
-    public String getTicketType() {
-        return ticketType;
+    public String getPassengerName() {
+        return passengerName;
     }
 
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
+    public void setPassengerName(String passengerName) {
+        this.passengerName = passengerName;
+    }
+
+    public String getPassengerEmail() {
+        return passengerEmail;
+    }
+
+    public void setPassengerEmail(String passengerEmail) {
+        this.passengerEmail = passengerEmail;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                Airline Ticket
+                ===================================
+                ===================================\040\040\040\040\040\040\040\040\040\040\040\040\040\040\040
+                Passenger Name = %s
+                Passenger Email = %s
+                Passenger Number = %s
+                Ticket Description = %s
+                 """,
+        passengerName,  passengerEmail,  passengerNum, ticketDescription);
     }
 }
 

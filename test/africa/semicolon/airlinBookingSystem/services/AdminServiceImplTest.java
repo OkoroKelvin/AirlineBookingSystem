@@ -90,10 +90,16 @@ class AdminServiceImplTest {
     @Test
     @DisplayName("Admin can add Airplane for services")
     void testThatAdminCanAddAirplaneForPassengersToBook(){
-        Airplane airplane = new Airplane(1,"Ark","Delta","Lagos");
-        Airplane airplane2 = new Airplane(2,"Peace","USA","Lagos");
-        adminService.addAirplane(airplane);
-        adminService.addAirplane(airplane2);
+        Airplane peace = new Airplane(1,"peace flight","kano","lagos",
+                "25/10/2021","1;30pm","4:00pm",5000);
+        Airplane love = new Airplane(2,"love flight","delta","turkey",
+                "26/10/2021","3:30pm","9:00pm",6500);
+        Airplane excel = new Airplane(3,"excel flight","delta","turkey",
+                "26/10/2021","3:25pm","5:22pm",5390);
+        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",
+                "25/11/2021","2:15am","7:00am",10000);
+        adminService.addAirplane(peace);
+        adminService.addAirplane(love);
         assertEquals(2,AirplaneDataBase.getInstance().getSize());
     }
 
@@ -101,11 +107,17 @@ class AdminServiceImplTest {
     @Test
     @DisplayName("Admin can Delete Airplane from Service")
     void testThatAdminCanDeleteAirplaneFromPassengerService(){
-        Airplane airplane = new Airplane(1,"Ark","Delta","Lagos");
-        Airplane airplane2 = new Airplane(2,"Peace","USA","Lagos");
-        adminService.addAirplane(airplane);
-        adminService.addAirplane(airplane2);
-        adminService.deleteAirplane(airplane);
+        Airplane peace = new Airplane(1,"peace flight","kano","lagos",
+                "25/10/2021","1;30pm","4:00pm",5000);
+        Airplane love = new Airplane(2,"love flight","delta","turkey",
+                "26/10/2021","3:30pm","9:00pm",6500);
+        Airplane excel = new Airplane(3,"excel flight","delta","turkey",
+                "26/10/2021","3:25pm","5:22pm",5390);
+        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",
+                "25/11/2021","2:15am","7:00am",10000);
+        adminService.addAirplane(peace);
+        adminService.addAirplane(love);
+        adminService.deleteAirplane(peace);
         assertEquals(1,AirplaneDataBase.getInstance().getSize());
     }
 }

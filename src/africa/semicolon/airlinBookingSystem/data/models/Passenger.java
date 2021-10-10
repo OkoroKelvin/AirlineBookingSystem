@@ -14,7 +14,7 @@ public class Passenger {
     private String address;
     private boolean isActive;
     private String password;
-    private final List<BookingEnquiry> bookingEnquiries = new ArrayList<>();
+    private static final List<BookingEnquiry> bookingEnquiries = new ArrayList<>();
 
 
     public Passenger(String email){
@@ -121,7 +121,7 @@ public class Passenger {
         this.address = address;
     }
 
-    public List<BookingEnquiry> getBookingEnquiries() {
+    public static List<BookingEnquiry> getBookingEnquiries() {
         return bookingEnquiries;
     }
 
