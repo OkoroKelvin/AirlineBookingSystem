@@ -195,8 +195,9 @@ class PassengerServiceImplTest {
         adminService.addAirplane( excel);
         adminService.addAirplane( eagle);
         BookingEnquiry booker = new BookingEnquiry("kelvin@yahoo.com","delta","turkey","Flight oversea");
-        List<Airplane> onFlight = passengerService.airlineBookingEnquiries(booker);
-        Ticket myTicket = passengerService.bookAirline(booker);
-        System.out.println(myTicket);
+        passengerService.airlineBookingEnquiries(booker);
+        Ticket ticket = passengerService.bookAirline(booker);
+        System.out.println(ticket);
+        assertEquals(1,Passenger.getTickets().size());
     }
 }

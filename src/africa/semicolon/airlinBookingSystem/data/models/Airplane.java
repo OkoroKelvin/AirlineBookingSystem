@@ -1,7 +1,5 @@
 package africa.semicolon.airlinBookingSystem.data.models;
 
-import java.util.Arrays;
-
 public class Airplane {
     private int airPlaneId;
     private String flightName;
@@ -11,7 +9,7 @@ public class Airplane {
     private String timeOfFLight;
     private String timeOfLanding;
     private double costOfFlight;
-    private Boolean[] seats;
+    private final Boolean[] seats = new Boolean[20];
 
 
     public Airplane(int airPlaneId,String flightName, String origin, String destination,String dateOfFlight,String timeOfFLight,String timeOfLanding,double costOfFlight) {
@@ -23,7 +21,6 @@ public class Airplane {
         this.timeOfFLight = timeOfFLight;
         this.timeOfLanding = timeOfLanding;
         this.costOfFlight = costOfFlight;
-        this.seats = new Boolean[20];
     }
 
     public String getFlightName() {
@@ -54,8 +51,13 @@ public class Airplane {
         return seats;
     }
 
-    public void setSeats(Boolean[] seats) {
-        this.seats = seats;
+    public void setSeats() {
+        for(int i = 0; i < seats.length; i++ ){
+            if(!seats[i]){
+                seats[i]=true;
+                break;
+            }
+        }
     }
 
     public int getAirPlaneId() {

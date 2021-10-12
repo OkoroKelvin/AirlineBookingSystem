@@ -15,6 +15,8 @@ public class PassengerServiceImpl implements PassengerService {
     PassengerDataBase passengerDataBase = PassengerDataBase.getInstance();
     FlightInformationDataBase flightInfoDataBase = FlightInformationDataBase.getInstance();
     AirplaneDataBase planeDataBase = AirplaneDataBase.getInstance();
+    AvailableAirplanes availableAirplanes = AvailableAirplanes.getInstance();
+
 
 
     @Override
@@ -24,6 +26,7 @@ public class PassengerServiceImpl implements PassengerService {
         }
         passengerDataBase.save(newPassenger);
     }
+
 
     @Override
     public void login(String email, String password) {
@@ -48,15 +51,27 @@ public class PassengerServiceImpl implements PassengerService {
     public List<Airplane> airlineBookingEnquiries(BookingEnquiry newBooker) {
         Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
         foundPassenger.setBookingEnquiries(newBooker);
-        return planeDataBase.searchFlight(newBooker);
+        List<Airplane> airplanes = planeDataBase.searchFlight(newBooker);
+        for(Airplane airplane : airplanes){
+            availableAirplanes.addAvailableAirplanes(airplane);
+            foundPassenger.addAvailableAirplanes(airplane);
+        }
+        return airplanes;
     }
 
     @Override
     public Ticket bookAirline(BookingEnquiry newBooker) {
+
         Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
+
        if (foundPassenger!=null) {
-           return new Ticket(foundPassenger.getFirstName() + " " + foundPassenger.getLastName(),
+           List<Airplane> airplanes = planeDataBase.searchFlight(newBooker);
+
+           Ticket ticket = new Ticket(foundPassenger.getFirstName() + " " + foundPassenger.getLastName(),
                    foundPassenger.getEmail(), foundPassenger.getPhoneNumber(), newBooker.getBookingEnquiryDescription());
+           foundPassenger.addTickets(ticket);
+
+           return ticket;
        }
        else
            return null;

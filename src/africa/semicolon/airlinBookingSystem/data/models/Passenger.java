@@ -15,6 +15,8 @@ public class Passenger {
     private boolean isActive;
     private String password;
     private static final List<BookingEnquiry> bookingEnquiries = new ArrayList<>();
+    private static final List<Ticket> tickets = new ArrayList<>();
+    private static final List<Airplane> availableAirplanes = new ArrayList<>();
 
 
     public Passenger(String email){
@@ -127,5 +129,21 @@ public class Passenger {
 
     public void setBookingEnquiries(BookingEnquiry bookingEnquiry) {
         bookingEnquiries.add(bookingEnquiry);
+    }
+
+    public static  List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void addTickets(Ticket newTicket) {
+        tickets.add(newTicket);
+    }
+
+    public List<Airplane> getAvailableAirplanes() {
+        return availableAirplanes;
+    }
+
+    public void addAvailableAirplanes(Airplane airplanes) {
+        availableAirplanes.add(airplanes);
     }
 }
