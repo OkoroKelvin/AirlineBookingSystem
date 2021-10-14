@@ -1,18 +1,23 @@
 package africa.semicolon.airlinBookingSystem.data.models;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class Airplane {
     private int airPlaneId;
     private String flightName;
     private String origin;
     private String destination;
-    private String dateOfFlight;
-    private String timeOfFLight;
-    private String timeOfLanding;
-    private double costOfFlight;
-    private final Boolean[] seats = new Boolean[20];
+    private LocalDate dateOfFlight;
+    private LocalTime timeOfFLight;
+    private LocalTime timeOfLanding;
+    private List<Boolean> seats = new ArrayList<>();
 
 
-    public Airplane(int airPlaneId,String flightName, String origin, String destination,String dateOfFlight,String timeOfFLight,String timeOfLanding,double costOfFlight) {
+    public Airplane(int airPlaneId,String flightName, String origin, String destination,LocalDate dateOfFlight,LocalTime timeOfFLight,LocalTime timeOfLanding) {
         this.airPlaneId = airPlaneId;
         this.flightName = flightName;
         this.origin = origin;
@@ -20,7 +25,10 @@ public class Airplane {
         this.dateOfFlight = dateOfFlight;
         this.timeOfFLight = timeOfFLight;
         this.timeOfLanding = timeOfLanding;
-        this.costOfFlight = costOfFlight;
+    }
+
+    public Airplane() {
+
     }
 
     public String getFlightName() {
@@ -47,16 +55,17 @@ public class Airplane {
         this.destination = destination;
     }
 
-    public Boolean[] getSeats() {
+    public List<Boolean> getSeats() {
         return seats;
     }
 
     public void setSeats() {
-        for(int i = 0; i < seats.length; i++ ){
-            if(!seats[i]){
-                seats[i]=true;
-                break;
-            }
+        Boolean state = true;
+        if (seats.size() < 20) {
+            seats.add(true);
+        }
+        else {
+            System.out.println("The seat is filled up");
         }
     }
 
@@ -68,36 +77,32 @@ public class Airplane {
         this.airPlaneId = airPlaneId;
     }
 
-    public String getTimeOfFLight() {
-        return timeOfFLight;
-    }
-
-    public void setTimeOfFLight(String timeOfFLight) {
-        this.timeOfFLight = timeOfFLight;
-    }
-
-    public String getTimeOfLanding() {
-        return timeOfLanding;
-    }
-
-    public void setTimeOfLanding(String timeOfLanding) {
-        this.timeOfLanding = timeOfLanding;
-    }
-
-    public double getCostOfFlight() {
-        return costOfFlight;
-    }
-
-    public void setCostOfFlight(double costOfFlight) {
-        this.costOfFlight = costOfFlight;
-    }
-
-    public String getDateOfFlight() {
+    public LocalDate getDateOfFlight() {
         return dateOfFlight;
     }
 
-    public void setDateOfFlight(String dateOfFlight) {
+    public void setDateOfFlight(LocalDate dateOfFlight) {
         this.dateOfFlight = dateOfFlight;
+    }
+
+    public LocalTime getTimeOfFLight() {
+        return timeOfFLight;
+    }
+
+    public void setTimeOfFLight(LocalTime timeOfFLight) {
+        this.timeOfFLight = timeOfFLight;
+    }
+
+    public LocalTime getTimeOfLanding() {
+        return timeOfLanding;
+    }
+
+    public void setTimeOfLanding(LocalTime timeOfLanding) {
+        this.timeOfLanding = timeOfLanding;
+    }
+
+    public void setSeats(List<Boolean> seats) {
+        this.seats = seats;
     }
 
     @Override

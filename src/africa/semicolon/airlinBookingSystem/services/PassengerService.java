@@ -11,7 +11,7 @@ public interface PassengerService {
 
     void login(String email, String password);
 
-    void logout(Passenger passenger1);
+    void logout(String email);
 
     void clearPassenger();
 

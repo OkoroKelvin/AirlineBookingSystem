@@ -2,7 +2,7 @@ package africa.semicolon.airlinBookingSystem.services;
 
 import africa.semicolon.airlinBookingSystem.data.models.*;
 import africa.semicolon.airlinBookingSystem.data.repositories.AirplaneDataBase;
-import africa.semicolon.airlinBookingSystem.data.repositories.FlightInformationDataBase;
+//import africa.semicolon.airlinBookingSystem.data.repositories.FlightInformationDataBase;
 import africa.semicolon.airlinBookingSystem.data.repositories.PassengerDataBase;
 import africa.semicolon.airlinBookingSystem.exceptions.AirlineSystemException;
 import africa.semicolon.airlinBookingSystem.exceptions.PassengerAlreadyRegisteredException;
@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class PassengerServiceImpl implements PassengerService {
     PassengerDataBase passengerDataBase = PassengerDataBase.getInstance();
-    FlightInformationDataBase flightInfoDataBase = FlightInformationDataBase.getInstance();
+    //FlightInformationDataBase flightInfoDataBase = FlightInformationDataBase.getInstance();
     AirplaneDataBase planeDataBase = AirplaneDataBase.getInstance();
     AvailableAirplanes availableAirplanes = AvailableAirplanes.getInstance();
 
@@ -33,13 +33,14 @@ public class PassengerServiceImpl implements PassengerService {
         Map<String, Passenger> allPassengers = passengerDataBase.getPassengers();
         Passenger passenger = allPassengers.get(email);
         if(Objects.equals(passenger.getPassword(), password)){
-            passenger.setActive(true);
+            passenger.setIsActive(true);
         }
     }
 
     @Override
-    public void logout(Passenger passenger1) {
-        passenger1.setActive(false);
+    public void logout(String email) {
+        Passenger thisPassenger = passengerDataBase.searchPassenger(email);
+        thisPassenger.setIsActive(false);
     }
 
     @Override
@@ -54,19 +55,17 @@ public class PassengerServiceImpl implements PassengerService {
         List<Airplane> airplanes = planeDataBase.searchFlight(newBooker);
         for(Airplane airplane : airplanes){
             availableAirplanes.addAvailableAirplanes(airplane);
-            foundPassenger.addAvailableAirplanes(airplane);
+//            foundPassenger.addAvailableAirplanes(airplane);
         }
         return airplanes;
     }
 
     @Override
     public Ticket bookAirline(BookingEnquiry newBooker) {
-
         Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
-
        if (foundPassenger!=null) {
            List<Airplane> airplanes = planeDataBase.searchFlight(newBooker);
-
+           airplanes.get(0).setSeats();
            Ticket ticket = new Ticket(foundPassenger.getFirstName() + " " + foundPassenger.getLastName(),
                    foundPassenger.getEmail(), foundPassenger.getPhoneNumber(), newBooker.getBookingEnquiryDescription());
            foundPassenger.addTickets(ticket);

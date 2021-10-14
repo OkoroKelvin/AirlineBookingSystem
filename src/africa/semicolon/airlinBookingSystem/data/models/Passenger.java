@@ -1,7 +1,6 @@
 package africa.semicolon.airlinBookingSystem.data.models;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,18 +15,15 @@ public class Passenger {
     private String password;
     private static final List<BookingEnquiry> bookingEnquiries = new ArrayList<>();
     private static final List<Ticket> tickets = new ArrayList<>();
-    private static final List<Airplane> availableAirplanes = new ArrayList<>();
 
-
-    public Passenger(String email){
+    public Passenger(String email) {
         this.email = email;
     }
 
-    public Passenger(String email, String password){
+    public Passenger(String email, String password) {
         this.email = email;
         this.password = password;
     }
-
 
     public Passenger(String id, String firstName, String lastName, String email, String password, String address, String phoneNumber) {
         this.address = address;
@@ -62,15 +58,19 @@ public class Passenger {
         this.password = password;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public boolean isActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setIsActive(boolean active) {
         isActive = active;
     }
 
@@ -92,14 +92,6 @@ public class Passenger {
 
     public String getEmail() {
         return email;
-    }
-
-    public String phoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     public String getId() {
@@ -131,19 +123,11 @@ public class Passenger {
         bookingEnquiries.add(bookingEnquiry);
     }
 
-    public static  List<Ticket> getTickets() {
+    public static List<Ticket> getTickets() {
         return tickets;
     }
 
     public void addTickets(Ticket newTicket) {
         tickets.add(newTicket);
-    }
-
-    public List<Airplane> getAvailableAirplanes() {
-        return availableAirplanes;
-    }
-
-    public void addAvailableAirplanes(Airplane airplanes) {
-        availableAirplanes.add(airplanes);
     }
 }

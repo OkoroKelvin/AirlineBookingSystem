@@ -11,6 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AdminServiceImplTest {
@@ -90,14 +93,28 @@ class AdminServiceImplTest {
     @Test
     @DisplayName("Admin can add Airplane for services")
     void testThatAdminCanAddAirplaneForPassengersToBook(){
-        Airplane peace = new Airplane(1,"peace flight","kano","lagos",
-                "25/10/2021","1;30pm","4:00pm",5000);
-        Airplane love = new Airplane(2,"love flight","delta","turkey",
-                "26/10/2021","3:30pm","9:00pm",6500);
-        Airplane excel = new Airplane(3,"excel flight","delta","turkey",
-                "26/10/2021","3:25pm","5:22pm",5390);
-        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",
-                "25/11/2021","2:15am","7:00am",10000);
+        LocalTime flightTime = LocalTime.of(1, 30);
+        LocalTime landingTime = LocalTime.of(6, 30);
+        LocalDate flightDate =  LocalDate.of(2020, 2, 12);
+        Airplane peace = new Airplane(1,"peace flight","kano","lagos",flightDate, flightTime,landingTime);
+
+
+        LocalTime flightTime2 = LocalTime.of(2, 30);
+        LocalTime landingTime2 = LocalTime.of(7, 30);
+        LocalDate flightDate2 =  LocalDate.of(2021, 2, 11);
+        Airplane love = new Airplane(2,"love flight","delta","turkey", flightDate2 ,flightTime2,landingTime2);
+
+        LocalTime flightTime3 = LocalTime.of(1, 10);
+        LocalTime landingTime3 = LocalTime.of(1, 55);
+        LocalDate flightDate3 =  LocalDate.of(2021, 9, 12);
+        Airplane excel = new Airplane(3,"excel flight","delta","turkey",flightDate3,flightTime3 ,landingTime3);
+
+
+        LocalTime flightTime4 = LocalTime.of(9, 10);
+        LocalTime landingTime4 = LocalTime.of(12, 55);
+        LocalDate flightDate4 =  LocalDate.of(2021, 8, 12);
+        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",flightDate4,flightTime4,landingTime4);
+
         adminService.addAirplane(peace);
         adminService.addAirplane(love);
         assertEquals(2,AirplaneDataBase.getInstance().getSize());
@@ -107,14 +124,28 @@ class AdminServiceImplTest {
     @Test
     @DisplayName("Admin can Delete Airplane from Service")
     void testThatAdminCanDeleteAirplaneFromPassengerService(){
-        Airplane peace = new Airplane(1,"peace flight","kano","lagos",
-                "25/10/2021","1;30pm","4:00pm",5000);
-        Airplane love = new Airplane(2,"love flight","delta","turkey",
-                "26/10/2021","3:30pm","9:00pm",6500);
-        Airplane excel = new Airplane(3,"excel flight","delta","turkey",
-                "26/10/2021","3:25pm","5:22pm",5390);
-        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",
-                "25/11/2021","2:15am","7:00am",10000);
+        LocalTime flightTime = LocalTime.of(1, 30);
+        LocalTime landingTime = LocalTime.of(6, 30);
+        LocalDate flightDate =  LocalDate.of(2020, 2, 12);
+        Airplane peace = new Airplane(1,"peace flight","kano","lagos",flightDate, flightTime,landingTime);
+
+
+        LocalTime flightTime2 = LocalTime.of(2, 30);
+        LocalTime landingTime2 = LocalTime.of(7, 30);
+        LocalDate flightDate2 =  LocalDate.of(2021, 2, 11);
+        Airplane love = new Airplane(2,"love flight","delta","turkey", flightDate2 ,flightTime2,landingTime2);
+
+        LocalTime flightTime3 = LocalTime.of(1, 10);
+        LocalTime landingTime3 = LocalTime.of(1, 55);
+        LocalDate flightDate3 =  LocalDate.of(2021, 9, 12);
+        Airplane excel = new Airplane(3,"excel flight","delta","turkey",flightDate3,flightTime3 ,landingTime3);
+
+
+        LocalTime flightTime4 = LocalTime.of(9, 10);
+        LocalTime landingTime4 = LocalTime.of(12, 55);
+        LocalDate flightDate4 =  LocalDate.of(2021, 8, 12);
+        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",flightDate4,flightTime4,landingTime4);
+
         adminService.addAirplane(peace);
         adminService.addAirplane(love);
         adminService.deleteAirplane(peace);

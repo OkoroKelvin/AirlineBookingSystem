@@ -34,11 +34,14 @@ public class AirplaneDataBase {
     public List<Airplane> searchFlight(BookingEnquiry newBooker) {
         List<Airplane> listOfPlanes = new ArrayList<>(airplanes.values());
         List<Airplane> foundAirplane = new ArrayList<>();
-        for (Airplane airplane : listOfPlanes) {
-            if (Objects.equals(airplane.getOrigin(), newBooker.getOrigin()) &&
-                    Objects.equals(airplane.getDestination(), newBooker.getDestination())) {
+        for (Airplane airplane : listOfPlanes){
+            if(Objects.equals(airplane.getOrigin(), newBooker.getOrigin()) &&
+                    Objects.equals(airplane.getDestination(),
+                            newBooker.getDestination()) &&
+                    airplane.getDateOfFlight()==newBooker.getDepartureDate()){
                 foundAirplane.add(airplane);
             }
+
         }
         return foundAirplane;
     }

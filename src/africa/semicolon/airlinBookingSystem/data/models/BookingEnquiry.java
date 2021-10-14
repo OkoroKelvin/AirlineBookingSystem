@@ -9,13 +9,15 @@ public class BookingEnquiry {
     private String destination;
     private String bookingEnquiryDescription;
     private LocalDateTime bookingEnquiryDate;
+    private LocalDate departureDate;
 
-    public BookingEnquiry(String passengerEmail, String origin, String destination, String bookingEnquiryDescription) {
+    public BookingEnquiry(String passengerEmail, String origin, String destination, String bookingEnquiryDescription, LocalDate departureDate) {
         this.passengerEmail = passengerEmail;
         this.origin = origin;
         this.destination = destination;
         this.bookingEnquiryDescription = bookingEnquiryDescription;
         this.bookingEnquiryDate = LocalDateTime.now();
+        this.departureDate = departureDate;
     }
 
     public String getOrigin() {
@@ -56,5 +58,13 @@ public class BookingEnquiry {
 
     public void setPassengerEmail(String passengerEmail) {
         this.passengerEmail = passengerEmail;
+    }
+
+    public LocalDate getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(LocalDate departureDate) {
+        this.departureDate = departureDate;
     }
 }
