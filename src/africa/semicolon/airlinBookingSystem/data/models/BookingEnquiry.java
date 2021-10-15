@@ -60,8 +60,11 @@ public class BookingEnquiry {
         this.passengerEmail = passengerEmail;
     }
 
-    public LocalDate getDepartureDate() {
-        return departureDate;
+    public String getDepartureDate() {
+            int year = departureDate.getYear();
+            int month = departureDate.getMonthValue();
+            int day = departureDate.getDayOfMonth();
+            return year +"/"+month +"/"+day;
     }
 
     public void setDepartureDate(LocalDate departureDate) {

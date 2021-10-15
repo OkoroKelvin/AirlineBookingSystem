@@ -18,6 +18,7 @@ public class AirplaneDataBase {
     public void save(Airplane airplane) {
         airplanes.put(airplane.getAirPlaneId(), airplane);
     }
+
     public Airplane searchAirplane(int airPlaneId) {
         return airplanes.get(airPlaneId);
     }
@@ -31,18 +32,14 @@ public class AirplaneDataBase {
         airplanes.remove(foundAirplane.getAirPlaneId(), foundAirplane);
     }
 
-    public List<Airplane> searchFlight(BookingEnquiry newBooker) {
+    public Airplane searchFlight(BookingEnquiry newBooker) {
         List<Airplane> listOfPlanes = new ArrayList<>(airplanes.values());
-        List<Airplane> foundAirplane = new ArrayList<>();
-        for (Airplane airplane : listOfPlanes){
-            if(Objects.equals(airplane.getOrigin(), newBooker.getOrigin()) &&
-                    Objects.equals(airplane.getDestination(),
-                            newBooker.getDestination()) &&
-                    airplane.getDateOfFlight()==newBooker.getDepartureDate()){
-                foundAirplane.add(airplane);
+        for (Airplane airplane : listOfPlanes) {
+            System.out.println(airplane.toString());
+            if (airplane.getOrigin().equals(newBooker.getOrigin()) && airplane.getDestination().equals(newBooker.getDestination())) {
+                return airplane;
             }
-
         }
-        return foundAirplane;
+        return null;
     }
 }

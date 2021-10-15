@@ -77,8 +77,11 @@ public class Airplane {
         this.airPlaneId = airPlaneId;
     }
 
-    public LocalDate getDateOfFlight() {
-        return dateOfFlight;
+    public String getDateOfFlight() {
+        int year = dateOfFlight.getYear();
+        int month = dateOfFlight.getMonthValue();
+        int day = dateOfFlight.getDayOfMonth();
+        return year +"/"+month +"/"+day;
     }
 
     public void setDateOfFlight(LocalDate dateOfFlight) {

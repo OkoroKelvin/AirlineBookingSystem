@@ -15,7 +15,7 @@ public interface PassengerService {
 
     void clearPassenger();
 
-   List<Airplane> airlineBookingEnquiries(BookingEnquiry newBookingEnquiry) throws AirlineSystemException;
+   Airplane airlineBookingEnquiries(BookingEnquiry newBookingEnquiry) throws AirlineSystemException;
 
     Ticket bookAirline(BookingEnquiry booker);
 }

@@ -147,9 +147,8 @@ class PassengerServiceImplTest {
         LocalDate departureDate =  LocalDate.of(2021, 8, 12);
         BookingEnquiry booker = new BookingEnquiry("kelvin@yahoo.com","delta","turkey",
                 "Flight oversea",departureDate);
-        List<Airplane> onFlight = passengerService.airlineBookingEnquiries(booker);
-        assertEquals(love,onFlight.get(0));
-        assertEquals(excel,onFlight.get(1));
+        Airplane onFlight = passengerService.airlineBookingEnquiries(booker);
+        assertEquals(love,onFlight);
     }
 
 
@@ -203,9 +202,7 @@ class PassengerServiceImplTest {
                 "Flight oversea",departureDate);
 
         passengerService.airlineBookingEnquiries(booker);
-        passengerService.airlineBookingEnquiries(newBooker);
         Ticket ticket = passengerService.bookAirline(booker);
-        passengerService.airlineBookingEnquiries(newBooker);
         System.out.println(ticket);
 
     }

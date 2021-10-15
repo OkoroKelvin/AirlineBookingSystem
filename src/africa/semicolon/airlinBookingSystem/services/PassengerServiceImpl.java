@@ -49,25 +49,20 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
-    public List<Airplane> airlineBookingEnquiries(BookingEnquiry newBooker) {
+    public Airplane airlineBookingEnquiries(BookingEnquiry newBooker) {
         Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
         foundPassenger.setBookingEnquiries(newBooker);
-        List<Airplane> airplanes = planeDataBase.searchFlight(newBooker);
-        for(Airplane airplane : airplanes){
-            availableAirplanes.addAvailableAirplanes(airplane);
-//            foundPassenger.addAvailableAirplanes(airplane);
-        }
-        return airplanes;
+        Airplane airplane = planeDataBase.searchFlight(newBooker);
+        return airplane;
     }
 
     @Override
     public Ticket bookAirline(BookingEnquiry newBooker) {
         Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
        if (foundPassenger!=null) {
-           List<Airplane> airplanes = planeDataBase.searchFlight(newBooker);
-           for(Airplane airplane : airplanes){
-               airplane.setSeats();
-           }
+           Airplane airplane = planeDataBase.searchFlight(newBooker);
+           System.out.println(airplane.toString());
+           airplane.setSeats();
            Ticket ticket = new Ticket(foundPassenger.getFirstName() + " " + foundPassenger.getLastName(),
                    foundPassenger.getEmail(), foundPassenger.getPhoneNumber(), newBooker.getBookingEnquiryDescription(),Airplane.getSeats()+1);
            foundPassenger.addTickets(ticket);
