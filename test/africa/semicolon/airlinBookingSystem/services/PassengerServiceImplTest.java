@@ -155,13 +155,17 @@ class PassengerServiceImplTest {
 
     @Test
     @DisplayName("Passenger can select and book available flight")
-    void passengerCanSelectAndBookAvaFlight() throws AirlineSystemException {
+    void passengerCanSelectAndBookAvaFlight() throws AirlineSystemException, PassengerAlreadyRegisteredException {
         Passenger passenger1;
         Passenger passenger2;
         passenger1 = new Passenger("1", "Kelvin", "Okoro", "kelvin@yahoo.com",
                 "1123", "street", "08163091749");
         passenger2 = new Passenger("2", "Theophilus", "Sunday", "sunday@yahoo.com",
                 "1223", "street", "07127619876");
+
+        passengerService.registerPassenger(passenger1);
+        passengerService.registerPassenger(passenger2);
+
 
         passengerService.login("kelvin@yahoo.com", "1123");
         LocalTime flightTime = LocalTime.of(1, 30);
@@ -194,8 +198,15 @@ class PassengerServiceImplTest {
         LocalDate departureDate =  LocalDate.of(2021, 5, 12);
         BookingEnquiry booker = new BookingEnquiry("kelvin@yahoo.com","delta","turkey",
                 "Flight oversea",departureDate);
+
+        BookingEnquiry newBooker = new BookingEnquiry("kelvin@yahoo.com","delta","turkey",
+                "Flight oversea",departureDate);
+
         passengerService.airlineBookingEnquiries(booker);
+        passengerService.airlineBookingEnquiries(newBooker);
         Ticket ticket = passengerService.bookAirline(booker);
+        passengerService.airlineBookingEnquiries(newBooker);
+        System.out.println(ticket);
 
     }
 }

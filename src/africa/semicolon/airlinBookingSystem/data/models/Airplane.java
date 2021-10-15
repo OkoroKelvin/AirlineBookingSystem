@@ -14,7 +14,7 @@ public class Airplane {
     private LocalDate dateOfFlight;
     private LocalTime timeOfFLight;
     private LocalTime timeOfLanding;
-    private List<Boolean> seats = new ArrayList<>();
+    private static List<Boolean> seats = new ArrayList<>();
 
 
     public Airplane(int airPlaneId,String flightName, String origin, String destination,LocalDate dateOfFlight,LocalTime timeOfFLight,LocalTime timeOfLanding) {
@@ -55,8 +55,8 @@ public class Airplane {
         this.destination = destination;
     }
 
-    public List<Boolean> getSeats() {
-        return seats;
+    public static int getSeats() {
+        return seats.size();
     }
 
     public void setSeats() {

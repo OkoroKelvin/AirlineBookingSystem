@@ -8,13 +8,15 @@ public class Ticket {
     private String passengerNum;
     private String ticketDescription;
     private LocalDateTime ticketDate;
+    private int seatNumber;
 
-    public Ticket(String passengerName,String passengerEmail,String passengerNum, String ticketDescription) {
+    public Ticket(String passengerName,String passengerEmail,String passengerNum, String ticketDescription, int seatNumber) {
         this.passengerName = passengerName;
         this.passengerEmail = passengerEmail;
         this.ticketDescription = ticketDescription;
         this.passengerNum = passengerNum;
         this.ticketDate = LocalDateTime.now();
+        this.seatNumber = seatNumber;
     }
 
     public String getTicketDescription() {
@@ -57,6 +59,14 @@ public class Ticket {
         this.passengerEmail = passengerEmail;
     }
 
+    public int getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
     @Override
     public String toString() {
         return String.format("""
@@ -67,8 +77,9 @@ public class Ticket {
                 Passenger Email = %s
                 Passenger Number = %s
                 Ticket Description = %s
+                Ticket seat Number = %d
                  """,
-        passengerName,  passengerEmail,  passengerNum, ticketDescription);
+        passengerName,  passengerEmail,  passengerNum, ticketDescription,seatNumber );
     }
 }
 

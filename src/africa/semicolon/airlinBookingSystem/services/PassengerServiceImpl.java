@@ -65,9 +65,11 @@ public class PassengerServiceImpl implements PassengerService {
         Passenger foundPassenger = passengerDataBase.searchPassenger(newBooker.getPassengerEmail());
        if (foundPassenger!=null) {
            List<Airplane> airplanes = planeDataBase.searchFlight(newBooker);
-           airplanes.get(0).setSeats();
+           for(Airplane airplane : airplanes){
+               airplane.setSeats();
+           }
            Ticket ticket = new Ticket(foundPassenger.getFirstName() + " " + foundPassenger.getLastName(),
-                   foundPassenger.getEmail(), foundPassenger.getPhoneNumber(), newBooker.getBookingEnquiryDescription());
+                   foundPassenger.getEmail(), foundPassenger.getPhoneNumber(), newBooker.getBookingEnquiryDescription(),Airplane.getSeats()+1);
            foundPassenger.addTickets(ticket);
 
            return ticket;
