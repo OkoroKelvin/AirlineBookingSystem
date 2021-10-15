@@ -12,3 +12,4 @@ public interface AdminService {
 
     void deleteAirplane(Airplane airplane);
 }
+

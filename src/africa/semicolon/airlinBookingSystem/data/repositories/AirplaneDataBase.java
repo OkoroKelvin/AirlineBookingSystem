@@ -2,7 +2,6 @@ package africa.semicolon.airlinBookingSystem.data.repositories;
 
 import africa.semicolon.airlinBookingSystem.data.models.Airplane;
 import africa.semicolon.airlinBookingSystem.data.models.BookingEnquiry;
-import africa.semicolon.airlinBookingSystem.exceptions.AirlineSystemException;
 
 import java.util.*;
 

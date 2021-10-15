@@ -16,14 +16,6 @@ public class Passenger {
     private static final List<BookingEnquiry> bookingEnquiries = new ArrayList<>();
     private static final List<Ticket> tickets = new ArrayList<>();
 
-    public Passenger(String email) {
-        this.email = email;
-    }
-
-    public Passenger(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
 
     public Passenger(String id, String firstName, String lastName, String email, String password, String address, String phoneNumber) {
         this.address = address;
@@ -54,13 +46,6 @@ public class Passenger {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -78,54 +63,21 @@ public class Passenger {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getEmail() {
         return email;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public static List<BookingEnquiry> getBookingEnquiries() {
-        return bookingEnquiries;
-    }
 
     public void setBookingEnquiries(BookingEnquiry bookingEnquiry) {
         bookingEnquiries.add(bookingEnquiry);
     }
 
-    public static List<Ticket> getTickets() {
-        return tickets;
-    }
 
     public void addTickets(Ticket newTicket) {
         tickets.add(newTicket);

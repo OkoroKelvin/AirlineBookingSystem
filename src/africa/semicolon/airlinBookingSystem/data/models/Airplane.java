@@ -3,7 +3,6 @@ package africa.semicolon.airlinBookingSystem.data.models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Airplane {
@@ -29,33 +28,18 @@ public class Airplane {
         this.numberOfSeats = numberOfSeats;
     }
 
-    public Airplane() {
 
-    }
 
-    public String getFlightName() {
-        return flightName;
-    }
-
-    public void setFlightName(String flightName) {
-        this.flightName = flightName;
-    }
 
     public String getOrigin() {
         return origin;
     }
 
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
 
     public String getDestination() {
         return destination;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
 
     public static int getSeats() {
         return seats.size();
@@ -114,13 +98,6 @@ public class Airplane {
         this.seats = seats;
     }
 
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public void setNumberOfSeats(int numberOfSeats) {
-        this.numberOfSeats = numberOfSeats;
-    }
 
     @Override
     public String toString() {

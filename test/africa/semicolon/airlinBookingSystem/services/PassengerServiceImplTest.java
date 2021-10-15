@@ -56,7 +56,7 @@ class PassengerServiceImplTest {
 
         passenger1 = new Passenger("1", "Kelvin", "Okoro", "kelvin@yahoo.com",
                 "1123", "27 Okunfolami Street", "08163091749");
-        passenger2 = new Passenger("1", "Theophilus", "Sunday", "kelvin@yahoo.com",
+        passenger2 = new Passenger("2", "Theophilus", "Sunday", "ke1@yahoo.com",
                 "1223", "street", "08163091749");
 
         passengerService.registerPassenger(passenger1);
@@ -77,10 +77,10 @@ class PassengerServiceImplTest {
                 "1223", "street", "07127619876");
         passengerService.registerPassenger(passenger1);
         passengerService.registerPassenger(passenger2);
+        assertFalse(passenger1.getIsActive());
         passengerService.login("kelvin@yahoo.com", "1123");
         assertTrue(passenger1.getIsActive());
-        passengerService.logout("kelvin@yahoo.com");
-        assertFalse(passenger1.getIsActive());
+//        passengerService.logout("kelvin@yahoo.com");
     }
 
     @Test
@@ -144,7 +144,7 @@ class PassengerServiceImplTest {
         adminService.addAirplane( eagle);
 
 
-        LocalDate departureDate =  LocalDate.of(2021, 8, 12);
+        LocalDate departureDate =  LocalDate.of(2021, 2, 11);
         BookingEnquiry booker = new BookingEnquiry("kelvin@yahoo.com","delta","turkey",
                 "Flight oversea",departureDate);
         Airplane onFlight = passengerService.airlineBookingEnquiries(booker);
@@ -201,10 +201,31 @@ class PassengerServiceImplTest {
         BookingEnquiry newBooker = new BookingEnquiry("kelvin@yahoo.com","delta","turkey",
                 "Flight oversea",departureDate);
 
-        passengerService.airlineBookingEnquiries(booker);
-        passengerService.airlineBookingEnquiries(newBooker);
+//        passengerService.airlineBookingEnquiries(booker);
+//        passengerService.airlineBookingEnquiries(newBooker);
         Ticket ticket = passengerService.bookAirline(booker);
         Ticket ticket2 = passengerService.bookAirline(newBooker);
+        String expectedTicket1 = """
+                Passenger Name = Kelvin Okoro
+                Passenger Email = kelvin@yahoo.com
+                Passenger Number = 08163091749
+                Ticket Description = Flight oversea
+                Ticket seat Number = 1
+                Departure Date = 2021/9/12
+                Time of Departure= 1:10
+                Time of Landing= 1:55
+                """;
+
+        String expectedTicket2 = """
+                Passenger Name = Kelvin Okoro
+                Passenger Email = kelvin@yahoo.com
+                Passenger Number = 08163091749
+                Ticket Description = Flight oversea
+                Ticket seat Number = 2
+                Departure Date = 2021/9/12
+                Time of Departure= 1:10
+                Time of Landing= 1:55
+                """;
         System.out.println(ticket);
         System.out.println(ticket2);
     }

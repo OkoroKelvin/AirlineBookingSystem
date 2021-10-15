@@ -24,41 +24,20 @@ public class BookingEnquiry {
         return origin;
     }
 
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
     public String getDestination() {
         return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public String getBookingEnquiryDescription() {
         return bookingEnquiryDescription;
     }
 
-    public void setBookingEnquiryDescription(String bookingEnquiryDescription) {
-        this.bookingEnquiryDescription = bookingEnquiryDescription;
-    }
 
-    public LocalDateTime getBookingEnquiryDate() {
-        return bookingEnquiryDate;
-    }
-
-    public void setBookingEnquiryDate(LocalDateTime bookingEnquiryDate) {
-        this.bookingEnquiryDate = bookingEnquiryDate;
-    }
 
     public String getPassengerEmail() {
         return passengerEmail;
     }
 
-    public void setPassengerEmail(String passengerEmail) {
-        this.passengerEmail = passengerEmail;
-    }
 
     public String getDepartureDate() {
             int year = departureDate.getYear();
@@ -67,7 +46,4 @@ public class BookingEnquiry {
             return year +"/"+month +"/"+day;
     }
 
-    public void setDepartureDate(LocalDate departureDate) {
-        this.departureDate = departureDate;
-    }
 }
