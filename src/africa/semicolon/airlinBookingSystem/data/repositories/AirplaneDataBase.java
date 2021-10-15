@@ -35,8 +35,8 @@ public class AirplaneDataBase {
     public Airplane searchFlight(BookingEnquiry newBooker) {
         List<Airplane> listOfPlanes = new ArrayList<>(airplanes.values());
         for (Airplane airplane : listOfPlanes) {
-            System.out.println(airplane.toString());
-            if (airplane.getOrigin().equals(newBooker.getOrigin()) && airplane.getDestination().equals(newBooker.getDestination())) {
+            if (airplane.getOrigin().equals(newBooker.getOrigin()) && airplane.getDestination().equals(newBooker.getDestination())&&
+            airplane.getDateOfFlight().equals(newBooker.getDepartureDate())) {
                 return airplane;
             }
         }

@@ -96,24 +96,24 @@ class AdminServiceImplTest {
         LocalTime flightTime = LocalTime.of(1, 30);
         LocalTime landingTime = LocalTime.of(6, 30);
         LocalDate flightDate =  LocalDate.of(2020, 2, 12);
-        Airplane peace = new Airplane(1,"peace flight","kano","lagos",flightDate, flightTime,landingTime);
+        Airplane peace = new Airplane(1,"peace flight","kano","lagos",flightDate, flightTime,landingTime,20);
 
 
         LocalTime flightTime2 = LocalTime.of(2, 30);
         LocalTime landingTime2 = LocalTime.of(7, 30);
         LocalDate flightDate2 =  LocalDate.of(2021, 2, 11);
-        Airplane love = new Airplane(2,"love flight","delta","turkey", flightDate2 ,flightTime2,landingTime2);
+        Airplane love = new Airplane(2,"love flight","delta","turkey", flightDate2 ,flightTime2,landingTime2,20);
 
         LocalTime flightTime3 = LocalTime.of(1, 10);
         LocalTime landingTime3 = LocalTime.of(1, 55);
         LocalDate flightDate3 =  LocalDate.of(2021, 9, 12);
-        Airplane excel = new Airplane(3,"excel flight","delta","turkey",flightDate3,flightTime3 ,landingTime3);
+        Airplane excel = new Airplane(3,"excel flight","delta","turkey",flightDate3,flightTime3 ,landingTime3,20);
 
 
         LocalTime flightTime4 = LocalTime.of(9, 10);
         LocalTime landingTime4 = LocalTime.of(12, 55);
         LocalDate flightDate4 =  LocalDate.of(2021, 8, 12);
-        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",flightDate4,flightTime4,landingTime4);
+        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",flightDate4,flightTime4,landingTime4,20);
 
         adminService.addAirplane(peace);
         adminService.addAirplane(love);
@@ -127,24 +127,24 @@ class AdminServiceImplTest {
         LocalTime flightTime = LocalTime.of(1, 30);
         LocalTime landingTime = LocalTime.of(6, 30);
         LocalDate flightDate =  LocalDate.of(2020, 2, 12);
-        Airplane peace = new Airplane(1,"peace flight","kano","lagos",flightDate, flightTime,landingTime);
+        Airplane peace = new Airplane(1,"peace flight","kano","lagos",flightDate, flightTime,landingTime,20);
 
 
         LocalTime flightTime2 = LocalTime.of(2, 30);
         LocalTime landingTime2 = LocalTime.of(7, 30);
         LocalDate flightDate2 =  LocalDate.of(2021, 2, 11);
-        Airplane love = new Airplane(2,"love flight","delta","turkey", flightDate2 ,flightTime2,landingTime2);
+        Airplane love = new Airplane(2,"love flight","delta","turkey", flightDate2 ,flightTime2,landingTime2,20);
 
         LocalTime flightTime3 = LocalTime.of(1, 10);
         LocalTime landingTime3 = LocalTime.of(1, 55);
         LocalDate flightDate3 =  LocalDate.of(2021, 9, 12);
-        Airplane excel = new Airplane(3,"excel flight","delta","turkey",flightDate3,flightTime3 ,landingTime3);
+        Airplane excel = new Airplane(3,"excel flight","delta","turkey",flightDate3,flightTime3 ,landingTime3,20);
 
 
         LocalTime flightTime4 = LocalTime.of(9, 10);
         LocalTime landingTime4 = LocalTime.of(12, 55);
         LocalDate flightDate4 =  LocalDate.of(2021, 8, 12);
-        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",flightDate4,flightTime4,landingTime4);
+        Airplane eagle = new Airplane(4,"eagle flight","kano","turkey",flightDate4,flightTime4,landingTime4,20);
 
         adminService.addAirplane(peace);
         adminService.addAirplane(love);

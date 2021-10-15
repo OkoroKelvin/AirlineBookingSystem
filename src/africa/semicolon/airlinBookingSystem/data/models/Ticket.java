@@ -8,15 +8,21 @@ public class Ticket {
     private String passengerNum;
     private String ticketDescription;
     private LocalDateTime ticketDate;
+    private String dateOfDeparture;
+    private String timeOfDeparture;
+    private String timeOfLanding;
     private int seatNumber;
 
-    public Ticket(String passengerName,String passengerEmail,String passengerNum, String ticketDescription, int seatNumber) {
+    public Ticket(String passengerName,String passengerEmail,String passengerNum, String ticketDescription, int seatNumber,String dateOfDeparture,String timeOfDeparture,String timeOfLanding) {
         this.passengerName = passengerName;
         this.passengerEmail = passengerEmail;
         this.ticketDescription = ticketDescription;
         this.passengerNum = passengerNum;
         this.ticketDate = LocalDateTime.now();
         this.seatNumber = seatNumber;
+        this.dateOfDeparture = dateOfDeparture;
+        this.timeOfDeparture = timeOfDeparture;
+        this.timeOfLanding = timeOfLanding;
     }
 
     public String getTicketDescription() {
@@ -67,6 +73,30 @@ public class Ticket {
         this.seatNumber = seatNumber;
     }
 
+    public String getDateOfDeparture() {
+        return dateOfDeparture;
+    }
+
+    public void setDateOfDeparture(String dateOfDeparture) {
+        this.dateOfDeparture = dateOfDeparture;
+    }
+
+    public String getTimeOfDeparture() {
+        return timeOfDeparture;
+    }
+
+    public void setTimeOfDeparture(String timeOfDeparture) {
+        this.timeOfDeparture = timeOfDeparture;
+    }
+
+    public String getTimeOfLanding() {
+        return timeOfLanding;
+    }
+
+    public void setTimeOfLanding(String timeOfLanding) {
+        this.timeOfLanding = timeOfLanding;
+    }
+
     @Override
     public String toString() {
         return String.format("""
@@ -78,8 +108,11 @@ public class Ticket {
                 Passenger Number = %s
                 Ticket Description = %s
                 Ticket seat Number = %d
+                Departure Date = %s
+                Time of Departure= %s
+                Time of Landing= %s
                  """,
-        passengerName,  passengerEmail,  passengerNum, ticketDescription,seatNumber );
+        passengerName,  passengerEmail,  passengerNum, ticketDescription,seatNumber,dateOfDeparture,timeOfDeparture,timeOfLanding );
     }
 }
 

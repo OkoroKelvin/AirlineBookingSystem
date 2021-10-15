@@ -14,10 +14,11 @@ public class Airplane {
     private LocalDate dateOfFlight;
     private LocalTime timeOfFLight;
     private LocalTime timeOfLanding;
+    private int numberOfSeats;
     private static List<Boolean> seats = new ArrayList<>();
 
 
-    public Airplane(int airPlaneId,String flightName, String origin, String destination,LocalDate dateOfFlight,LocalTime timeOfFLight,LocalTime timeOfLanding) {
+    public Airplane(int airPlaneId,String flightName, String origin, String destination,LocalDate dateOfFlight,LocalTime timeOfFLight,LocalTime timeOfLanding,int numberOfSeats) {
         this.airPlaneId = airPlaneId;
         this.flightName = flightName;
         this.origin = origin;
@@ -25,6 +26,7 @@ public class Airplane {
         this.dateOfFlight = dateOfFlight;
         this.timeOfFLight = timeOfFLight;
         this.timeOfLanding = timeOfLanding;
+        this.numberOfSeats = numberOfSeats;
     }
 
     public Airplane() {
@@ -61,7 +63,7 @@ public class Airplane {
 
     public void setSeats() {
         Boolean state = true;
-        if (seats.size() < 20) {
+        if (seats.size() < numberOfSeats) {
             seats.add(true);
         }
         else {
@@ -77,6 +79,18 @@ public class Airplane {
         this.airPlaneId = airPlaneId;
     }
 
+    public String getTimeOfFLight() {
+        int hour = timeOfFLight.getHour();
+        int minutes = timeOfFLight.getMinute();
+        return hour +":"+minutes;
+    }
+
+    public String getTimeOfLanding() {
+        int hour = timeOfLanding.getHour();
+        int minutes = timeOfLanding.getMinute();
+        return hour +":"+minutes;
+    }
+
     public String getDateOfFlight() {
         int year = dateOfFlight.getYear();
         int month = dateOfFlight.getMonthValue();
@@ -88,16 +102,8 @@ public class Airplane {
         this.dateOfFlight = dateOfFlight;
     }
 
-    public LocalTime getTimeOfFLight() {
-        return timeOfFLight;
-    }
-
     public void setTimeOfFLight(LocalTime timeOfFLight) {
         this.timeOfFLight = timeOfFLight;
-    }
-
-    public LocalTime getTimeOfLanding() {
-        return timeOfLanding;
     }
 
     public void setTimeOfLanding(LocalTime timeOfLanding) {
@@ -106,6 +112,14 @@ public class Airplane {
 
     public void setSeats(List<Boolean> seats) {
         this.seats = seats;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
     }
 
     @Override
